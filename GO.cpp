@@ -10,21 +10,21 @@ typedef struct error
 	int i;
 	int sum_time;
 }error;
-//æ•°æ®
+//Êı¾İ
 /*0 0 1 9 2 21 3 32 4 36 5 43 6 45 7 50 8 58 9 63 10 70 11 71 12 77 13 78 14 87 
 15 91 16 92 17 95 18 98 19 104 20 105 21 116 22 149 23 156 24 247 25 249 26 250 27 337 28 384 -1*/
 int main()
 {
 	int i;
-	error temp_error;//ä¸´æ—¶
+	error temp_error;//ÁÙÊ±
 	temp_error.i = 0;
 	temp_error.sum_time = 0;
-	vector<error>error_list;//å­˜æ‰€æœ‰é”™è¯¯çš„ä¿¡æ¯
-	double  b=0.0, a=0.0,sum_tk=0;//é¢„ç®—å€¼
-	//è¾“å…¥éƒ¨åˆ†
+	vector<error>error_list;//´æËùÓĞ´íÎóµÄĞÅÏ¢
+	double  b=0.0, a=0.0,sum_tk=0;//Ô¤ËãÖµ
+	//ÊäÈë²¿·Ö
 	i = 1;
-	cout << "è¯·å¼€å§‹è¾“å…¥é”™è¯¯æ•°æ®,è¾“-1ç»“æŸï¼š" << endl;
-	while (temp_error.i != -1)//è¾“å…¥
+	cout << "Çë¿ªÊ¼ÊäÈë´íÎóÊı¾İ,Êä-1½áÊø£º" << endl;
+	while (temp_error.i != -1)//ÊäÈë
 	{
 		cin >> temp_error.i;
 		if (temp_error.i == -1) {
@@ -33,11 +33,11 @@ int main()
 		cin >> temp_error.sum_time;
 		sum_tk += temp_error.sum_time;
 		i++;
-		error_list.push_back(temp_error);//æ”¾è¿›å®¹å™¨
+		error_list.push_back(temp_error);//·Å½øÈİÆ÷
 	}
-	const int n = error_list.size() - 1;//å®é™…é”™è¯¯æ€»æ•°
-	//è®¡ç®—éƒ¨åˆ†
-	a = n - n / 15;//å…ˆçŒœä¸€ä¸ªa
+	const int n = error_list.size() - 1;//Êµ¼Ê´íÎó×ÜÊı
+	//¼ÆËã²¿·Ö
+	a = n - n / 15;//ÏÈ²ÂÒ»¸öa
 	double l,r,tn;
 	tn = error_list.back().sum_time;
 	while(1)
@@ -45,16 +45,16 @@ int main()
 		l = (tn * n) / (sum_tk + tn * (a-n) );
 		r = log(a / (a - n));
 		//cout << "l:" << l << "  r:" << r << endl;
-		if (fabs(l - r) <= fanwei)//tnbå’Œln(a/(a-n))çš„å·®çš„ç»å¯¹å€¼å°çš„è¯
+		if (fabs(l - r) <= fanwei)//tnbºÍln(a/(a-n))µÄ²îµÄ¾ø¶ÔÖµĞ¡µÄ»°
 		{
 			b = l / tn;
 			break;
 		}
 		a += jingdu;
 	}
-	//è¾“å‡ºç¯èŠ‚
-	cout << "å®é™…é”™è¯¯ä¸ªæ•°ï¼š" << n << endl;
-	cout << "é¢„æµ‹aï¼š" << a << endl;
-	cout << "é¢„æµ‹æ¯”ä¾‹ç³»æ•°bï¼š" << b << endl;
+	//Êä³ö»·½Ú
+	cout << "Êµ¼Ê´íÎó¸öÊı£º" << n << endl;
+	cout << "Ô¤²âa£º" << a << endl;
+	cout << "Ô¤²â±ÈÀıÏµÊıb£º" << b << endl;
 	return 0;
 }

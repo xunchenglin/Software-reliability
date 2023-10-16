@@ -11,7 +11,7 @@ typedef struct error
 	int time;
 }error;
 
-double summ(int n,double N,double xxii,double & sum_fen)//è®¡ç®—å·®å€¼
+double summ(int n,double N,double xxii,double & sum_fen)//¼ÆËã²îÖµ
 {
 	sum_fen = 0;
 	for (int i = 1; i <= n; i++)
@@ -20,47 +20,47 @@ double summ(int n,double N,double xxii,double & sum_fen)//è®¡ç®—å·®å€¼
 	}
 	return sum_fen-n/(N-xxii);
 }
-//æ•°æ®ï¼š
+//Êı¾İ£º
 /* 1 9 2 12 3 11 4 4 5 7 6 2 7 5 8 8 9 5 10 7 11 1 12 6 13 1 14 9 15 4 16 1 17 3 
 18 8 19 6 20 1 21 1 22 33 23 7 24 91 25 2 26 1 27 87 28 47 29 12 30 9 31 135 32 258 33 16 34 35 0*/
 int main()
 {
 	int i ;
-	error temp_error;//ä¸´æ—¶
+	error temp_error;//ÁÙÊ±
 	temp_error.i = 0;
 	temp_error.time = 0;
-	vector<error>error_list;//å­˜æ‰€æœ‰é”™è¯¯çš„ä¿¡æ¯
+	vector<error>error_list;//´æËùÓĞ´íÎóµÄĞÅÏ¢
 	double sum_xi = 0, sum_ixi = 0,guessF = 0;
 	double s, tt, N,sum_fen,j;
-	//è¾“å…¥éƒ¨åˆ†
+	//ÊäÈë²¿·Ö
 	i = 1;
-	cout << "è¯·å¼€å§‹è¾“å…¥é”™è¯¯æ•°æ®,è¾“0ç»“æŸï¼š" << endl;
-	while (1)//è¾“å…¥
+	cout << "Çë¿ªÊ¼ÊäÈë´íÎóÊı¾İ,Êä0½áÊø£º" << endl;
+	while (1)//ÊäÈë
 	{
 		cin >> temp_error.i;
 		if (temp_error.i == 0){
 			break;
 		}
 		cin >> temp_error.time;
-		sum_xi += temp_error.time;//xiæ€»å’Œ//æå‰è®¡ç®—è¦ç”¨çš„å€¼
-		sum_ixi += temp_error.time * (i-1); //ï¼ˆi-1ï¼‰xiæ€»å’Œ//æå‰è®¡ç®—è¦ç”¨çš„å€¼
+		sum_xi += temp_error.time;//xi×ÜºÍ//ÌáÇ°¼ÆËãÒªÓÃµÄÖµ
+		sum_ixi += temp_error.time * (i-1); //£¨i-1£©xi×ÜºÍ//ÌáÇ°¼ÆËãÒªÓÃµÄÖµ
 		i++;
-		error_list.push_back(temp_error);//æ”¾è¿›å®¹å™¨
+		error_list.push_back(temp_error);//·Å½øÈİÆ÷
 	}
-	double xxii = sum_ixi / sum_xi;//æå‰è®¡ç®—è¦ç”¨çš„å€¼
-	const int n = error_list.size();//å®é™…é”™è¯¯æ€»æ•°
-	//è®¡ç®—éƒ¨åˆ†
-	N = n-n/15;//å…ˆçŒœNä¸ºå€çš„n
+	double xxii = sum_ixi / sum_xi;//ÌáÇ°¼ÆËãÒªÓÃµÄÖµ
+	const int n = error_list.size();//Êµ¼Ê´íÎó×ÜÊı
+	//¼ÆËã²¿·Ö
+	N = n-n/15;//ÏÈ²ÂNÎª±¶µÄn
 	double sn = summ(n, N, xxii, sum_fen);;
-	while(guessF==0)//faiä¸ºè®°å·
+	while(guessF==0)//faiÎª¼ÇºÅ
 	{
 		sn = summ(n, N, xxii, sum_fen);
-		if (fabs(sn) <= fanwei )//å·®å€¼ç»å¯¹å€¼å°äºç­‰äº
+		if (fabs(sn) <= fanwei )//²îÖµ¾ø¶ÔÖµĞ¡ÓÚµÈÓÚ
 		{
-			guessF = (float)n / (N * sum_xi - sum_ixi);//ç¡®å®šfai,ä¹Ÿä½œä¸ºè®°å·
-			break;//è·³å‡º
+			guessF = (float)n / (N * sum_xi - sum_ixi);//È·¶¨fai,Ò²×÷Îª¼ÇºÅ
+			break;//Ìø³ö
 		}
-		else if(fabs(sn) > fanwei)//å·®å€¼ç»å¯¹å€¼
+		else if(fabs(sn) > fanwei)//²îÖµ¾ø¶ÔÖµ
 		{
 			while (sn > 0 && fabs(sn) > fanwei)
 			{
@@ -72,13 +72,13 @@ int main()
 				N -= jingdu;
 				sn = summ(n, N, xxii, sum_fen);
 			}
-			guessF = (float)n / (N * sum_xi - sum_ixi);//ç¡®å®šfai,ä¹Ÿä½œä¸ºè®°å·
-			break;//è·³å‡º
+			guessF = (float)n / (N * sum_xi - sum_ixi);//È·¶¨fai,Ò²×÷Îª¼ÇºÅ
+			break;//Ìø³ö
 		}
 	}
-	//è¾“å‡ºç¯èŠ‚
-	cout << "é¢„æµ‹é”™è¯¯ä¸ªæ•°ï¼š" << N <<endl;
-	cout << "å®é™…é”™è¯¯ä¸ªæ•°ï¼š" << error_list.size() << endl;
-	cout << "é¢„æµ‹æ¯”ä¾‹ç³»æ•°ï¼š" << guessF <<endl;
+	//Êä³ö»·½Ú
+	cout << "Ô¤²â´íÎó¸öÊı£º" << N <<endl;
+	cout << "Êµ¼Ê´íÎó¸öÊı£º" << error_list.size() << endl;
+	cout << "Ô¤²â±ÈÀıÏµÊı£º" << guessF <<endl;
 	return 0;
 }
